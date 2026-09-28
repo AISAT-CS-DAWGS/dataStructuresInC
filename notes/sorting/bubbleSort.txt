@@ -1,0 +1,51 @@
+Bubble Sort:
+ Adjacent elements are compared and swapped if they are not in order. 
+
+ - Pass 1:
+    => Compare a[0] and a[1]. If a[0] > a[1], swap them.
+    => Compare a[1] and a[2]. If a[1] > a[2], swap them.
+    => Compare a[2] and a[3]. If a[2] > a[3], swap them.
+    => ...
+    => ...
+    => ...
+    => Compare a[n-3] and a[n-2]. If a[n-3] > a[n-2], swap them.
+    => Compare a[n-2] and a[n-1]. If a[n-2] > a[n-1], swap them.
+
+ - Pass 2:
+    => Compare a[0] and a[1]. If a[0] > a[1], swap them.
+    => Compare a[1] and a[2]. If a[1] > a[2], swap them.
+    => Compare a[2] and a[3]. If a[2] > a[3], swap them.
+    => ...
+    => ...
+    => ...
+    => Compare a[n-4] and a[n-3]. If a[n-4] > a[n-3], swap them.
+    => Compare a[n-3] and a[n-2]. If a[n-3] > a[n-2], swap them.
+
+  - ...
+
+  - ...
+
+  - ...
+
+  - Pass n-1:
+    => Compare a[0] and a[1]. If a[0] > a[1], swap them.
+
+Analysis of Bubble Sort:
+ - Data Sensitive
+   => Data in sorted order (ascending)
+    <=> Only one pass
+    <=> Number of comparisons = n-1
+    <=> No swaps
+    <=> Time Complexity: O(n)
+
+   => Data in reverse order (Descending)
+    <=> n-1 passes
+    <=> Number of comparisons = (n-1) + (n-2) + (n-3) + ... + 3 + 2 + 1 = n(n-1)/2
+    <=> Swaps: n(n-1)/2
+    <=> Time Complexity: O(n^2)
+
+   => Data in random order
+    <=> Total comparisons in i^th pass: n-i
+    <=> Suppose p passes,
+      * Number of comparisons = (n-1) + (n-2) + (n-3) + ... + (n-p) = (2pn - p^2 - p)/2
+    <=> Time Complexity: O(n^2)
