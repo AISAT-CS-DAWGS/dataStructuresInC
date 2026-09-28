@@ -1,0 +1,23 @@
+Sort Pass:
+  - Pass is a step in Sorting
+  - After last pass, data becomes sorted
+
+In-Place Sorting Methods:
+  - No need extra storage. Near to O(1) space complexity.
+  - Might need only constant number of variables - independent of size and data
+
+Not In-Place Sorting Methods:
+  - Need extra storage
+    Extra storage is proportional to the size of data
+
+Sort Efficiency:
+  - Space Requirement
+  - Runtime or Execution Time
+
+Stable Sort:
+  - Record Rx and Ry have equal sort keys
+  - Record Rx precedes Record Ry in the input data
+  - In Unstable Sort, Rx and Ry can be in any order, while in Stable Sort, Rx precedes Ry in the sorted output data
+
+Need for Stable Sort:
+  - Records sorted on one key are sorted on another key
