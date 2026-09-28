@@ -1,0 +1,29 @@
+Selection Sort:
+  - Pass 1:
+      => Find the smallest element from a[0] to a[n-1]
+      => Swap the found smallest element with a[0]
+
+  - Pass 2:
+      => Find the smallest element from a[1] to a[n-1]
+      => Swap the found smallest element with a[1]
+
+  - Pass n-1:
+      => Find the smallest element from a[n-1] and a[n-2]
+      => Swap the found smallest element with a[n-2]
+
+  - After n-1 passes, the whole array becomes sorted.
+
+Analysis of Selection Sort:
+  - Pass 1: a[minIndex] is compared with a[1] ... a[n-1] => n-1 Comparisons
+  - Pass 2: a[minIndex] is compared with a[2] ... a[n-1] => n-2 Comparisons
+  - ...
+  - ...
+  - ...
+  - Pass n-2: a[minIndex] is compared with a[n-2], a[n-1] => 2 Comparisons
+  - Pass n-1: a[minIndex] is compared with a[n-1] => 1 Comparisons
+
+  - Total Comparisons: n(n-1)/2
+  - Not a data sensitive sort
+  - Less data movement
+  - In-place sort
+  - Unstable sort
