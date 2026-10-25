@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 struct Node {
-    int data;
-    struct Node *next;
+	int data;
+	struct Node *next;
 };
 
 struct Node *front, *rear;
@@ -16,122 +16,130 @@ int peek();
 int isEmpty();
 void display();
 
-int main() {
-    int n, num;
+int main()
+{
+	int n, num;
 
-    initializeQueue();
+	initializeQueue();
 
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
+	printf("Enter the number of elements: ");
+	scanf("%d", &n);
 
-    for (int i=0; i<n; i++) {
-        printf("Enter the element: ");
-        scanf("%d", &num);
-        insert(num);
-    }
+	for (int i = 0; i < n; i++) {
+		printf("Enter the element: ");
+		scanf("%d", &num);
+		insert(num);
+	}
 
-    display();
+	display();
 
-    delete();
-    display();
+	delete();
+	display();
 
-    printf("Size of the queue: %d\n", size());
+	printf("Size of the queue: %d\n", size());
 
-    printf("Peak element in the queue: %d\n", peek());
+	printf("Peak element in the queue: %d\n", peek());
 
-    return 0;
+	return 0;
 }
 
-void initializeQueue() {
-    front = NULL;
-    rear = NULL;
+void initializeQueue()
+{
+	front = NULL;
+	rear = NULL;
 }
 
-void insert(int x) {
-    struct Node *temp;
-    temp = (struct Node *)malloc(sizeof(struct Node));
+void insert(int x)
+{
+	struct Node *temp;
+	temp = (struct Node *)malloc(sizeof(struct Node));
 
-    temp->data = x;
-    temp->next = NULL;
+	temp->data = x;
+	temp->next = NULL;
 
-    if (front == NULL) {
-        front = temp;
-    }
+	if (front == NULL) {
+		front = temp;
+	}
 
-    else {
-        rear->next = temp;
-    }
+	else {
+		rear->next = temp;
+	}
 
-    rear = temp;
+	rear = temp;
 }
 
-int delete() {
-    struct Node *temp;
-    int x;
+int delete()
+{
+	struct Node *temp;
+	int x;
 
-    if (isEmpty()) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+	if (isEmpty()) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    temp = front;
-    front = front->next;
-    x = temp->data;
-    free(temp);
+	temp = front;
+	front = front->next;
+	x = temp->data;
+	free(temp);
 
-    return x;
+	return x;
 }
 
-int peek() {
-    int x;
+int peek()
+{
+	int x;
 
-    if (front == NULL) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+	if (front == NULL) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    x = front->data;
+	x = front->data;
 
-    return x;
+	return x;
 }
 
-int isEmpty() {
-    if (front == NULL) {
-        return 1;
-    }
+int isEmpty()
+{
+	if (front == NULL) {
+		return 1;
+	}
 
-    else {
-        return 0;
-    }
+	else {
+		return 0;
+	}
 }
 
-int size() {
-    int s = 0;
+int size()
+{
+	int s = 0;
 
-    struct Node *p = front;
+	struct Node *p = front;
 
-    while (p != NULL) {
-        p = p->next;
-        s++;
-    }
+	while (p != NULL) {
+		p = p->next;
+		s++;
+	}
 
-    return s;
+	return s;
 }
 
-void display() {
-    struct Node *p;
-    p = front;
-    
-    if (isEmpty()) {
-        printf("Empty Queue!\n");
-        return;
-    }
+void display()
+{
+	struct Node *p;
+	p = front;
 
-    printf("Queue is: !\n");
+	if (isEmpty()) {
+		printf("Empty Queue!\n");
+		return;
+	}
 
-    while (p != NULL) {
-        printf("%d\t", p->data);
-        p = p->next;
-    }
-    printf("\n");
+	printf("Queue is: !\n");
+
+	while (p != NULL) {
+		printf("%d\t", p->data);
+		p = p->next;
+	}
+	printf("\n");
 }

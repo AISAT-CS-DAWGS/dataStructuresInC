@@ -14,183 +14,192 @@ int deleteFront();
 int deleteRear();
 void display();
 
-int main() {
-    int n, num;
+int main()
+{
+	int n, num;
 
-    initializeQueue();
+	initializeQueue();
 
-    printf("Enter the number of elements to push front: ");
-    scanf("%d", &n);
+	printf("Enter the number of elements to push front: ");
+	scanf("%d", &n);
 
-    for (int i=0; i<n; i++) {
-        printf("Enter the element to push: ");
-        scanf("%d", &num);
+	for (int i = 0; i < n; i++) {
+		printf("Enter the element to push: ");
+		scanf("%d", &num);
 
-        insertFront(num);
-    }
+		insertFront(num);
+	}
 
-    display();
-    
-    printf("Enter the number of elements to push rear: ");
-    scanf("%d", &n);
+	display();
 
-    for (int i=0; i<n; i++) {
-        printf("Enter the element to push: ");
-        scanf("%d", &num);
+	printf("Enter the number of elements to push rear: ");
+	scanf("%d", &n);
 
-        insertRear(num);
-    }
+	for (int i = 0; i < n; i++) {
+		printf("Enter the element to push: ");
+		scanf("%d", &num);
 
-    display();
+		insertRear(num);
+	}
 
-    printf("Deleting an element from the front: %d\n", deleteFront());
-    display();
+	display();
 
-    printf("Deleting an element from the end: %d\n", deleteRear());
-    display();
+	printf("Deleting an element from the front: %d\n", deleteFront());
+	display();
 
-    return 0;
+	printf("Deleting an element from the end: %d\n", deleteRear());
+	display();
+
+	return 0;
 }
 
-void initializeQueue() {
-    front = rear = -1;
+void initializeQueue()
+{
+	front = rear = -1;
 }
 
-int isEmpty() {
-    if (front == -1) {
-        return 1;
-    }
+int isEmpty()
+{
+	if (front == -1) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-int isFull() {
-    if ((front == 0 && rear == MAX-1) || (front == rear + 1)) {
-        return 1;
-    }
+int isFull()
+{
+	if ((front == 0 && rear == MAX - 1) || (front == rear + 1)) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-void insertFront(int x) {
-    if (isFull()) {
-        printf("Queue Overflow!\n");
-        return;
-    }
+void insertFront(int x)
+{
+	if (isFull()) {
+		printf("Queue Overflow!\n");
+		return;
+	}
 
-    if (front == -1) {
-        front = rear = 0;
-    }
+	if (front == -1) {
+		front = rear = 0;
+	}
 
-    else if (front == 0) {
-        front = MAX-1;
-    }
+	else if (front == 0) {
+		front = MAX - 1;
+	}
 
-    else {
-        front = front - 1;
-    }
+	else {
+		front = front - 1;
+	}
 
-    array[front] = x;
+	array[front] = x;
 }
 
-void insertRear(int x) {
-    if (isFull()) {
-        printf("Queue Overflow!\n");
-        return;
-    }
+void insertRear(int x)
+{
+	if (isFull()) {
+		printf("Queue Overflow!\n");
+		return;
+	}
 
-    if (front == -1) {
-        front = 0;
-    }
+	if (front == -1) {
+		front = 0;
+	}
 
-    if (rear == MAX-1) {
-        rear = 0;
-    }
+	if (rear == MAX - 1) {
+		rear = 0;
+	}
 
-    else {
-        rear += 1;
-    }
+	else {
+		rear += 1;
+	}
 
-    array[rear] = x;
+	array[rear] = x;
 }
 
-int deleteFront() {
-    int x;
+int deleteFront()
+{
+	int x;
 
-    if (isEmpty()) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+	if (isEmpty()) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    x = array[front];
+	x = array[front];
 
-   if (front == rear) {
-    front = rear = -1;
-   } 
+	if (front == rear) {
+		front = rear = -1;
+	}
 
-   else if (front == MAX-1) {
-    front = 0;
-   }
+	else if (front == MAX - 1) {
+		front = 0;
+	}
 
-   else {
-    front += 1;
-   }
+	else {
+		front += 1;
+	}
 
-   return x;
+	return x;
 }
 
-int deleteRear() {
-    int x;
+int deleteRear()
+{
+	int x;
 
-    if (isEmpty()) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+	if (isEmpty()) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    x = array[rear];
+	x = array[rear];
 
-    if (front == rear) {
-        front = rear = -1;
-    }
+	if (front == rear) {
+		front = rear = -1;
+	}
 
-    else if (rear == 0) {
-        rear = MAX-1;
-    }
+	else if (rear == 0) {
+		rear = MAX - 1;
+	}
 
-    else {
-        rear = rear-1;
-    }
+	else {
+		rear = rear - 1;
+	}
 
-    return x;
+	return x;
 }
 
-void display() {
-    if (isEmpty()) {
-        printf("Empty Queue!\n");
-        return;
-    }
+void display()
+{
+	if (isEmpty()) {
+		printf("Empty Queue!\n");
+		return;
+	}
 
-    printf("Queue is: \n");
-    
-    int i = front;
+	printf("Queue is: \n");
 
-    if (front <= rear) {
-        while (i <= rear) {
-            printf("%d\t", array[i++]);
-        }
-    }
+	int i = front;
 
-    else {
-        while (i <= MAX-1) {
-            printf("%d\t", array[i++]);
-        }
+	if (front <= rear) {
+		while (i <= rear) {
+			printf("%d\t", array[i++]);
+		}
+	}
 
-        i = 0;
+	else {
+		while (i <= MAX - 1) {
+			printf("%d\t", array[i++]);
+		}
 
-        while (i <= rear) {
-            printf("%d\t", array[i++]);
-        }
-    }
+		i = 0;
 
-    printf("\n");
+		while (i <= rear) {
+			printf("%d\t", array[i++]);
+		}
+	}
+
+	printf("\n");
 }

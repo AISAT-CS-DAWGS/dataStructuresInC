@@ -2,20 +2,22 @@
 
 void decimalToOctal(int num);
 
-int main() {
-    int num;
+int main()
+{
+	int num;
 
-    printf("Enter the number to convert to octal: ");
-    scanf("%d", &num);
+	printf("Enter the number to convert to octal: ");
+	scanf("%d", &num);
 
-    decimalToOctal(num);
+	decimalToOctal(num);
 }
 
-void decimalToOctal(int num) {
-    if (num == 0) {
-        return;
-    }
+void decimalToOctal(int num)
+{
+	if (num == 0) {
+		return;
+	}
 
-    decimalToOctal(num/8);
-    printf("%d\n", num%8);
+	decimalToOctal(num / 8);
+	printf("%d\n", num % 8);
 }

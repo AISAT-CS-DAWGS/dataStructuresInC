@@ -16,180 +16,189 @@ int peek();
 void display();
 int size();
 
-int main() {
-    int n, num;
+int main()
+{
+	int n, num;
 
-    initializeQueue();
+	initializeQueue();
 
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
+	printf("Enter the number of elements: ");
+	scanf("%d", &n);
 
-    for (int i=0; i<n; i++) {
-        printf("Enter the element: ");
-        scanf("%d", &num);
-        insert(num);
-    }
+	for (int i = 0; i < n; i++) {
+		printf("Enter the element: ");
+		scanf("%d", &num);
+		insert(num);
+	}
 
-    display();
+	display();
 
-    printf("Enter the number of elements to delete: ");
-    scanf("%d", &n);
+	printf("Enter the number of elements to delete: ");
+	scanf("%d", &n);
 
-    for (int i=0; i<n; i++) {
-        int x = delete();
-        printf("Deleted element: %d\n" , x);
-    }
+	for (int i = 0; i < n; i++) {
+		int x = delete();
+		printf("Deleted element: %d\n", x);
+	}
 
-    display();
+	display();
 
-    printf("Peak element: %d\n", peek());
-    printf("Size of the queue: %d\n", size());
+	printf("Peak element: %d\n", peek());
+	printf("Size of the queue: %d\n", size());
 
-    return 0;
+	return 0;
 }
 
-void initializeQueue() {
-    rear = -1;
-    front = -1;
+void initializeQueue()
+{
+	rear = -1;
+	front = -1;
 }
 
-int isEmpty() {
-    if (front == -1) {
-        return 1;
-    }
+int isEmpty()
+{
+	if (front == -1) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-int isFull() {
-    if ((front == 0 && rear == MAX-1) || (front == rear+1)) {
-        return 1;
-    }
+int isFull()
+{
+	if ((front == 0 && rear == MAX - 1) || (front == rear + 1)) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-void insert(int x) {
-    if (isFull()) {
-        printf("Queue Overflow!\n");
-        return;
-    }
+void insert(int x)
+{
+	if (isFull()) {
+		printf("Queue Overflow!\n");
+		return;
+	}
 
-    if (front == -1) {
-        front = 0;
-    }
+	if (front == -1) {
+		front = 0;
+	}
 
-    if (rear == MAX-1) {
-        rear = 0;
-    }
+	if (rear == MAX - 1) {
+		rear = 0;
+	}
 
-    else {
-        rear = rear+1;
-    }
+	else {
+		rear = rear + 1;
+	}
 
-    array[rear] = x;
+	array[rear] = x;
 }
 
-int delete() {
-    int x;
+int delete()
+{
+	int x;
 
-    if (isEmpty()) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+	if (isEmpty()) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    x = array[front];
+	x = array[front];
 
-    if (front == rear) {
-        front = -1;
-        rear = -1;
-    }
+	if (front == rear) {
+		front = -1;
+		rear = -1;
+	}
 
-    else if (front == MAX-1) {
-        front = 0;
-    }
+	else if (front == MAX - 1) {
+		front = 0;
+	}
 
-    else {
-        front += 1;
-    }
+	else {
+		front += 1;
+	}
 
-    return x;
+	return x;
 }
 
-int peek() {
-    if (isEmpty()) {
-        printf("Queue Underflow!\n");
-        exit(1);
-    }
+int peek()
+{
+	if (isEmpty()) {
+		printf("Queue Underflow!\n");
+		exit(1);
+	}
 
-    return array[front];
+	return array[front];
 }
 
-void display() {
-    printf("Front = %d, Rear = %d\n", front, rear);
+void display()
+{
+	printf("Front = %d, Rear = %d\n", front, rear);
 
-    if (isEmpty()) {
-        printf("Queue is empty!\n");
-        return;
-    }
+	if (isEmpty()) {
+		printf("Queue is empty!\n");
+		return;
+	}
 
-    int i = front;
-    printf("Queue is: \n");
+	int i = front;
+	printf("Queue is: \n");
 
-    if (front <= rear) {
-        while (i <= rear) {
-            printf("%d\t", array[i++]);
-        } 
-    }
+	if (front <= rear) {
+		while (i <= rear) {
+			printf("%d\t", array[i++]);
+		}
+	}
 
-    else {
-        while (i<=MAX-1) {
-            printf("%d\t", array[i++]);
-        }
+	else {
+		while (i <= MAX - 1) {
+			printf("%d\t", array[i++]);
+		}
 
-        i = 0;
+		i = 0;
 
-        while (i <= rear) {
-            printf("%d\t", array[i++]);
-        }
-    }
+		while (i <= rear) {
+			printf("%d\t", array[i++]);
+		}
+	}
 
-    printf("\n");
+	printf("\n");
 }
 
-int size() {
-    int i, s;
+int size()
+{
+	int i, s;
 
-    if (isEmpty()) {
-        return 0;
-    }
+	if (isEmpty()) {
+		return 0;
+	}
 
-    if (isFull()) {
-        return 1;
-    }
+	if (isFull()) {
+		return 1;
+	}
 
-    i = front, s = 0;
-    
-    if (front <= rear) {
-        while (i <= rear) {
-            i++;
-            s++;
-        } 
-    }
+	i = front, s = 0;
 
-    else {
-        while (i <= MAX-1) {
-            i++;
-            s++;
-        }
+	if (front <= rear) {
+		while (i <= rear) {
+			i++;
+			s++;
+		}
+	}
 
-        i = 0;
+	else {
+		while (i <= MAX - 1) {
+			i++;
+			s++;
+		}
 
-        while (i <= rear) {
-            i++;
-            s++;
-        }
-    }
+		i = 0;
 
-    return s;
+		while (i <= rear) {
+			i++;
+			s++;
+		}
+	}
+
+	return s;
 }

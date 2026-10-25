@@ -3,39 +3,41 @@
 
 void bubbleSort(int *arr, int num);
 
-int main() {
-  int num;
+int main()
+{
+	int num;
 
-  printf("Enter the number of elements: ");
-  scanf("%d", &num);
+	printf("Enter the number of elements: ");
+	scanf("%d", &num);
 
-  int *arr = (int *)malloc(num * sizeof(int));
+	int *arr = (int *)malloc(num * sizeof(int));
 
-  if (arr == NULL) {
-    printf("Memory Allocation Failed!\n");
-    return -1;
-  }
+	if (arr == NULL) {
+		printf("Memory Allocation Failed!\n");
+		return -1;
+	}
 
-  for (int i = 0; i < num; i++) {
-    printf("Enter the element at index %d: ", i);
-    scanf("%d", &arr[i]);
-  }
+	for (int i = 0; i < num; i++) {
+		printf("Enter the element at index %d: ", i);
+		scanf("%d", &arr[i]);
+	}
 
-  bubbleSort(arr, num);
+	bubbleSort(arr, num);
 
-  printf("Sorted Array: \n");
-  for (int i = 0; i < num; i++) {
-    printf("%d\t", arr[i]);
-  }
-  printf("\n");
+	printf("Sorted Array: \n");
+	for (int i = 0; i < num; i++) {
+		printf("%d\t", arr[i]);
+	}
+	printf("\n");
 
-  return 0;
+	return 0;
 }
 
-void bubbleSort(int *arr, int num) {
-  int temp, swap;
+void bubbleSort(int *arr, int num)
+{
+	int temp, swap;
 
-  /*
+	/*
    * Use of swap:
    * In case the array is {42, 21, 13, 34, 65, 51},
    * Pass 1: Iteration 1: we get array = {21, 42, 13, 34, 65, 51}
@@ -53,18 +55,18 @@ void bubbleSort(int *arr, int num) {
    * are required. Hence, we break the loop.
    */
 
-  for (int i = num - 1; i > 0; i--) {
-    swap = 0;
-    for (int j = 0; j < i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swap++;
-      }
-    }
-    if (swap == 0) {
-      break;
-    }
-  }
+	for (int i = num - 1; i > 0; i--) {
+		swap = 0;
+		for (int j = 0; j < i; j++) {
+			if (arr[j] > arr[j + 1]) {
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				swap++;
+			}
+		}
+		if (swap == 0) {
+			break;
+		}
+	}
 }

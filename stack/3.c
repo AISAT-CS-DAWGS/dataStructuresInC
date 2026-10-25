@@ -14,102 +14,110 @@ int isEmpty();
 int matchParanthesis(char leftPar, char rightPar);
 char pop();
 
-int main() {
-    char expr[MAX];
+int main()
+{
+	char expr[MAX];
 
-    initializeStack();
+	initializeStack();
 
-    printf("Enter an expression: ");
-    fgets(expr, sizeof(expr), stdin);
+	printf("Enter an expression: ");
+	fgets(expr, sizeof(expr), stdin);
 
-    if (isValid(expr)) {
-        printf("Valid Expression!\n");
-    }
+	if (isValid(expr)) {
+		printf("Valid Expression!\n");
+	}
 
-    else {
-        printf("Invalid Expression\n");
-    }
+	else {
+		printf("Invalid Expression\n");
+	}
 }
 
-void initializeStack() {
-    top = -1;
+void initializeStack()
+{
+	top = -1;
 }
 
-int isValid(char expr[]) {
-    char ch;
+int isValid(char expr[])
+{
+	char ch;
 
-    for (int i=0; i<strlen(expr); i++) {
-        if (expr[i] == '{' || expr[i] == '(' || expr[i] == '[') {
-            push(expr[i]);
-        }
+	for (int i = 0; i < strlen(expr); i++) {
+		if (expr[i] == '{' || expr[i] == '(' || expr[i] == '[') {
+			push(expr[i]);
+		}
 
-        if (expr[i] == '}' || expr[i] == ')' || expr[i] == ']') {
-            if (isEmpty()) {
-                printf("Right parantheses are more than left parantheses\n");
-                return 0;
-            }
+		if (expr[i] == '}' || expr[i] == ')' || expr[i] == ']') {
+			if (isEmpty()) {
+				printf("Right parantheses are more than left parantheses\n");
+				return 0;
+			}
 
-            else {
-                ch = pop();
+			else {
+				ch = pop();
 
-                if (!matchParanthesis(ch, expr[i])) {
-                    printf("Mismatched parantheses are %c and %c\n", ch, expr[i]);
-                    return 0;
-                }
-            }
-        }
-    }
+				if (!matchParanthesis(ch, expr[i])) {
+					printf("Mismatched parantheses are %c and %c\n",
+					       ch, expr[i]);
+					return 0;
+				}
+			}
+		}
+	}
 
-    if (isEmpty()) {
-        printf("Balanced Paranthese!\n");
-        return 1;
-    }
+	if (isEmpty()) {
+		printf("Balanced Paranthese!\n");
+		return 1;
+	}
 
-    else {
-        printf("Left parantheses are more than right parantheses!\n");
-        return 0;
-    }
+	else {
+		printf("Left parantheses are more than right parantheses!\n");
+		return 0;
+	}
 }
 
-void push(char x) {
-    if (top == MAX-1) {
-        printf("Stack Overflow!\n");
-        return;
-    }
+void push(char x)
+{
+	if (top == MAX - 1) {
+		printf("Stack Overflow!\n");
+		return;
+	}
 
-    top += 1;
-    stack[top] = x;
+	top += 1;
+	stack[top] = x;
 }
 
-int isEmpty() {
-    if (top == -1) {
-        return 1;
-    }
+int isEmpty()
+{
+	if (top == -1) {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-int matchParanthesis(char leftPar, char rightPar) {
-    if (leftPar == '(' && rightPar == ')') {
-        return 1;
-    }
+int matchParanthesis(char leftPar, char rightPar)
+{
+	if (leftPar == '(' && rightPar == ')') {
+		return 1;
+	}
 
-    if (leftPar == '{' && rightPar == '}') {
-        return 1;
-    }
+	if (leftPar == '{' && rightPar == '}') {
+		return 1;
+	}
 
-    if (leftPar == '[' && rightPar == ']') {
-        return 1;
-    }
+	if (leftPar == '[' && rightPar == ']') {
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
-char pop() {
-    if (top == -1) {
-        printf("Stack Underflow!\n");
-        exit(1);
-    }
+char pop()
+{
+	if (top == -1) {
+		printf("Stack Underflow!\n");
+		exit(1);
+	}
 
-    return stack[top--];
+	return stack[top--];
 }

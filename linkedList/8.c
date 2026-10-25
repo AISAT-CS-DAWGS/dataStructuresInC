@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 struct Node {
-    int data;
-    struct Node *next;
+	int data;
+	struct Node *next;
 };
 
 void createList(struct Node *head);
@@ -14,160 +14,168 @@ void displayList(struct Node *head);
 void deleteNode(struct Node *head, int data);
 void reverse(struct Node *head);
 
-int main() {
-    struct Node *head;
-    int pos, data;
+int main()
+{
+	struct Node *head;
+	int pos, data;
 
-    head = (struct Node *)malloc(sizeof(struct Node));
-    head->data = 0;
-    head->next = NULL;
+	head = (struct Node *)malloc(sizeof(struct Node));
+	head->data = 0;
+	head->next = NULL;
 
-    createList(head);
+	createList(head);
 
-    printf("Enter the position of the successor element: ");
-    scanf("%d", &pos);
+	printf("Enter the position of the successor element: ");
+	scanf("%d", &pos);
 
-    printf("Enter the value of the node: ");
-    scanf("%d", &data);
+	printf("Enter the value of the node: ");
+	scanf("%d", &data);
 
-    insertAfterPosition(head, data, pos);
-    displayList(head);
+	insertAfterPosition(head, data, pos);
+	displayList(head);
 
-    printf("Enter the node data to delete the node: ");
-    scanf("%d", &data);
+	printf("Enter the node data to delete the node: ");
+	scanf("%d", &data);
 
-    deleteNode(head, data);
-    displayList(head);
+	deleteNode(head, data);
+	displayList(head);
 
-    reverse(head);
-    displayList(head);
+	reverse(head);
+	displayList(head);
 }
 
-void createList(struct Node *head) {
-    int n, num;
+void createList(struct Node *head)
+{
+	int n, num;
 
-    printf("Enter the number of nodes: ");
-    scanf("%d", &n);
+	printf("Enter the number of nodes: ");
+	scanf("%d", &n);
 
-    for (int i=0; i<n; i++) {
-        printf("Enter the element to be inserted: ");
-        scanf("%d", &num);
+	for (int i = 0; i < n; i++) {
+		printf("Enter the element to be inserted: ");
+		scanf("%d", &num);
 
-        insertAtEnd(head, num);
-    }
+		insertAtEnd(head, num);
+	}
 }
 
-void insertAtEnd(struct Node *head, int data) {
-    struct Node *p, *temp;
+void insertAtEnd(struct Node *head, int data)
+{
+	struct Node *p, *temp;
 
-    temp = (struct Node *)malloc(sizeof(struct Node));
-    temp->data = data;
+	temp = (struct Node *)malloc(sizeof(struct Node));
+	temp->data = data;
 
-    p = head;
-    while (p->next != NULL) {
-        p = p->next;
-    }
+	p = head;
+	while (p->next != NULL) {
+		p = p->next;
+	}
 
-    p->next = temp;
-    temp->next = NULL;
+	p->next = temp;
+	temp->next = NULL;
 }
 
-void insertBefore(struct Node *head, int data, int num) {
-    struct Node *p, *temp;
+void insertBefore(struct Node *head, int data, int num)
+{
+	struct Node *p, *temp;
 
-    p = head;
+	p = head;
 
-    while (p->next != NULL) {
-        if (p->next->data == num) {
-            break;
-        }
-        p = p->next;
-    }
+	while (p->next != NULL) {
+		if (p->next->data == num) {
+			break;
+		}
+		p = p->next;
+	}
 
-    if (p->next == NULL) {
-        printf("Element %d not found in the list!\n", num);
-    }
+	if (p->next == NULL) {
+		printf("Element %d not found in the list!\n", num);
+	}
 
-    else {
-        temp = (struct Node *)malloc(sizeof(struct Node));
-        temp->data = data;
+	else {
+		temp = (struct Node *)malloc(sizeof(struct Node));
+		temp->data = data;
 
-        temp->next = p->next;
-        p->next = temp;
-    }
+		temp->next = p->next;
+		p->next = temp;
+	}
 }
 
-void insertAfterPosition(struct Node *head, int data, int pos) {
-    struct Node *temp, *p;
+void insertAfterPosition(struct Node *head, int data, int pos)
+{
+	struct Node *temp, *p;
 
-    p = head;
+	p = head;
 
-    for (int i=0; i<pos-1 && p != NULL; i++) {
-        p = p->next;
-    }
+	for (int i = 0; i < pos - 1 && p != NULL; i++) {
+		p = p->next;
+	}
 
-    if (p == NULL) {
-        printf("NULL position!\n");
-    }
+	if (p == NULL) {
+		printf("NULL position!\n");
+	}
 
-    else {
-        temp = (struct Node *)malloc(sizeof(struct Node));
-        temp->data = data;
-        temp->next = p->next;
-        p->next = temp;
-    }
+	else {
+		temp = (struct Node *)malloc(sizeof(struct Node));
+		temp->data = data;
+		temp->next = p->next;
+		p->next = temp;
+	}
 }
 
-void displayList(struct Node *head) {
-    if (head->next == NULL) {
-        printf("Empty List!\n");
-    }
+void displayList(struct Node *head)
+{
+	if (head->next == NULL) {
+		printf("Empty List!\n");
+	}
 
-    struct Node *p = head->next;
-    printf("The list is: ");
-    while (p != NULL) {
-        printf("%d, ", p->data);
-        p = p->next;
-    }
+	struct Node *p = head->next;
+	printf("The list is: ");
+	while (p != NULL) {
+		printf("%d, ", p->data);
+		p = p->next;
+	}
 
-    printf("\n");
+	printf("\n");
 }
 
-void deleteNode(struct Node *head, int data) {
-    struct Node *p, *temp;
+void deleteNode(struct Node *head, int data)
+{
+	struct Node *p, *temp;
 
-    p = head;
+	p = head;
 
-    while (p->next != NULL) {
-        if (p->next->data == data) {
-            break;
-        }
-        p = p->next;
-    }
+	while (p->next != NULL) {
+		if (p->next->data == data) {
+			break;
+		}
+		p = p->next;
+	}
 
-    if (p->next == NULL) {
-        printf("Element not found in the list!\n");
-    }
+	if (p->next == NULL) {
+		printf("Element not found in the list!\n");
+	}
 
-    else {
-        temp = p->next;
-        p->next = temp->next;
-        free(temp);
-    }
+	else {
+		temp = p->next;
+		p->next = temp->next;
+		free(temp);
+	}
 }
 
-void reverse(struct Node *head) {
-    struct Node *prev, *next, *ptr;
+void reverse(struct Node *head)
+{
+	struct Node *prev, *next, *ptr;
 
-    prev = NULL;
-    ptr = head->next;
+	prev = NULL;
+	ptr = head->next;
 
-    while (ptr != NULL) {
-        next = ptr->next;
-        ptr->next = prev;
-        prev = ptr;
-        ptr = next;
-    }
+	while (ptr != NULL) {
+		next = ptr->next;
+		ptr->next = prev;
+		prev = ptr;
+		ptr = next;
+	}
 
-    head->next = prev;
+	head->next = prev;
 }
